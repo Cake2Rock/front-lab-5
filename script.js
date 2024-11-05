@@ -1,14 +1,12 @@
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Запобігаємо відправленню форми
+    event.preventDefault();
 
-    // Отримуємо значення полів
     const fullName = document.getElementById('fullName');
     const faculty = document.getElementById('faculty');
     const birthDate = document.getElementById('birthDate');
     const address = document.getElementById('address');
     const email = document.getElementById('email');
 
-    // Регулярні вирази
     const fullNamePattern = /^[А-ЯІЇЄҐ][а-яіїєґ']{1,}\s[А-ЯІЇЄҐ]\.[А-ЯІЇЄҐ]\.$/;
     const facultyPattern = /^[А-ЯІЇЄҐ]{4}$/;
     const birthDatePattern = /^\d{2}\.\d{2}\.\d{4}$/;
@@ -17,7 +15,6 @@ document.getElementById('registrationForm').addEventListener('submit', function(
 
     let isValid = true;
 
-    // Функція для перевірки поля
     function validateField(field, pattern) {
         if (pattern.test(field.value.trim())) {
             field.classList.remove('invalid');
@@ -29,7 +26,6 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         }
     }
 
-    // Перевіряємо кожне поле
     validateField(fullName, fullNamePattern);
     validateField(faculty, facultyPattern);
     validateField(birthDate, birthDatePattern);
@@ -37,7 +33,6 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     validateField(email, emailPattern);
 
     if (isValid) {
-        // Якщо всі поля валідні, виводимо інформацію в окремому вікні
         const userInfo = `
             ПІБ: ${fullName.value}
             Факультет: ${faculty.value}
@@ -50,3 +45,57 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         alert('Будь ласка, виправте помилки у формі.');
     }
 });
+
+const variantNumber = 5;
+
+const table = document.getElementById('myTable');
+let cellNumber = 1;
+
+for (let i = 0; i < 6; i++) {
+    const row = document.createElement('tr');
+    for (let j = 0; j < 6; j++) {
+        const cell = document.createElement('td');
+        cell.textContent = cellNumber;
+        cell.id = 'cell-' + cellNumber;
+
+        if (cellNumber === variantNumber) {
+            cell.addEventListener('mouseover', function() {
+                const randomColor = getRandomColor();
+                cell.style.backgroundColor = randomColor;
+            });
+
+            cell.addEventListener('click', function() {
+                const selectedColor = document.getElementById('colorPicker').value;
+                cell.style.backgroundColor = selectedColor;
+            });
+
+            cell.addEventListener('dblclick', function() {
+                changeOtherCellsColor(cell);
+            });
+        }
+
+        row.appendChild(cell);
+        cellNumber++;
+    }
+    table.appendChild(row);
+}
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let k = 0; k < 6; k++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function changeOtherCellsColor(selectedCell) {
+    const allCells = document.querySelectorAll('#myTable td');
+    const selectedCellId = selectedCell.id;
+
+    allCells.forEach(function(cell) {
+        if (cell.id !== selectedCellId) {
+            cell.style.backgroundColor = getRandomColor();
+        }
+    });
+}

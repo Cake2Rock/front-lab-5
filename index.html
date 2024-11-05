@@ -2,29 +2,34 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Форма валідації</title>
+    <title>Об'єднані Завдання 1 та 2</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Форма реєстрації</h1>
     <form id="registrationForm">
         <label for="fullName">ПІБ:</label>
-        <input type="text" id="fullName" name="fullName" placeholder="Прізвище І.І."><br><br>
+        <input type="text" id="fullName" name="fullName" placeholder="Прізвище І.І."><br>
 
         <label for="faculty">Факультет:</label>
-        <input type="text" id="faculty" name="faculty" placeholder="Наприклад, ФІОТ"><br><br>
+        <input type="text" id="faculty" name="faculty" placeholder="Наприклад, ФІОТ"><br>
 
         <label for="birthDate">Дата народження:</label>
-        <input type="text" id="birthDate" name="birthDate" placeholder="ДД.ММ.РРРР"><br><br>
+        <input type="text" id="birthDate" name="birthDate" placeholder="ДД.ММ.РРРР"><br>
 
         <label for="address">Адреса:</label>
-        <input type="text" id="address" name="address" placeholder="м. Місто"><br><br>
+        <input type="text" id="address" name="address" placeholder="м. Місто"><br>
 
         <label for="email">E-mail:</label>
         <input type="text" id="email" name="email" placeholder="example@example.com"><br><br>
 
         <button type="submit">Надіслати</button>
     </form>
+
+    <h2>Таблиця 6x6</h2>
+    <label for="colorPicker">Оберіть колір:</label>
+    <input type="color" id="colorPicker" value="#ff0000">
+    <table id="myTable"></table>
 
     <script src="script.js"></script>
 </body>

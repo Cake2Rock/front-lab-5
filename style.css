@@ -3,16 +3,21 @@ body {
     margin: 20px;
 }
 
-h1 {
+h1, h2 {
     color: #333;
+}
+
+form {
+    margin-bottom: 40px;
 }
 
 label {
     display: inline-block;
     width: 150px;
+    margin-bottom: 10px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="email"] {
     width: 200px;
     padding: 5px;
 }
@@ -28,4 +33,23 @@ input.valid {
 button {
     padding: 10px 20px;
     font-size: 16px;
+    cursor: pointer;
+}
+
+#colorPicker {
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #000;
+    cursor: pointer;
+    user-select: none;
 }
